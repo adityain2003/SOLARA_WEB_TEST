@@ -18,6 +18,7 @@ dependencies:
   - vega_datasets
   - ipyvolume
   - leafmap
+  - maplibre
   - pygis
   - maplibre
   - voila
