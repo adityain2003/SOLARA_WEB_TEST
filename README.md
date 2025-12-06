@@ -1,5 +1,5 @@
 ---
-title: Voila demo deployed on Hugging Face Spaces
+title: Voila Test
 emoji: 🚀
 colorFrom: yellow
 colorTo: green
