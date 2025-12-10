@@ -1,5 +1,5 @@
 ---
-title: Voila Test
+title: Solara Test
 emoji: 🚀
 colorFrom: yellow
 colorTo: green
