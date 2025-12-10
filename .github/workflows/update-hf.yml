@@ -17,4 +17,5 @@ jobs:
         env:
           HF_USER: ${{ secrets.HF_USER }}
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          EARTHENGINE_TOKEN: ${{ secrets.EARTHENGINE_TOKEN }}
         run: git push https://$HF_USER:$HF_TOKEN@huggingface.co/spaces/adityain2003/VOILA_TEST main --force
