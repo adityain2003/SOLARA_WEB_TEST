@@ -17,4 +17,5 @@ RUN mamba env create --prefix $HOME/env  -f ./environment.yml
 EXPOSE 7860
 WORKDIR $HOME/app
 
-CMD ["solara", "run", "./pages", "--host=0.0.0.0"]
+# Activate the conda environment and run solara
+CMD ["conda", "run", "--prefix", "/home/user/env", "solara", "run", "./pages", "--host=0.0.0.0"]

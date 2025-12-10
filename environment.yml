@@ -1,4 +1,4 @@
-name: voila
+name: solara
 channels:
   - conda-forge
 dependencies:
