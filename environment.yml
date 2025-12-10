@@ -29,3 +29,7 @@ dependencies:
   - pip:
     - voila==0.5.5
     - voila-topbar==0.1.1
+    - geemap>=0.36.6
+    - geopandas
+    - pydantic
+    - solara
