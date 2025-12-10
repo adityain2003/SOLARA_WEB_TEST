@@ -1,21 +1,21 @@
-FROM condaforge/mambaforge:latest
+FROM jupyter/base-notebook:latest
 
-# The HF Space container runs with user ID 1000.
-RUN useradd -m -u 1000 user
-USER user
+RUN mamba install -c conda-forge leafmap geopandas localtileserver -y && \
+    fix-permissions "${CONDA_DIR}" && \
+    fix-permissions "/home/${NB_USER}"
 
-# Set home to the user's home directory
-ENV HOME=/home/user \
-  PATH=/home/user/.local/bin:$PATH
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
-# Set the working directory to the user's home directory
-WORKDIR $HOME/app
-COPY --chown=user . .
+RUN mkdir ./pages
+COPY /pages ./pages
 
-RUN mamba env create --prefix $HOME/env  -f ./environment.yml
+ENV PROJ_LIB='/opt/conda/share/proj'
 
-EXPOSE 7860
-WORKDIR $HOME/app
+USER root
+RUN chown -R ${NB_UID} ${HOME}
+USER ${NB_USER}
 
-# Activate the conda environment and run solara
-CMD ["conda", "run", "--prefix", "/home/user/env", "solara", "run", "./pages", "--host=0.0.0.0"]
+EXPOSE 8765
+
+CMD ["solara", "run", "./pages", "--host=0.0.0.0"]
