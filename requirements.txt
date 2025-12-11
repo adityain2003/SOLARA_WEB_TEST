@@ -1,0 +1,4 @@
+geemap>=0.36.6
+geopandas
+pydantic
+solara
